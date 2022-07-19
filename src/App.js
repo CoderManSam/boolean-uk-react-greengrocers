@@ -3,15 +3,15 @@ import {useState} from "react"
 import './styles/reset.css'
 import './styles/index.css'
 
-import storeItems from "./store-items"
-import { StoreItemList } from './components/StoreItemList'
-import { StoreCart } from "./components/StoreCart"
+// import storeItems from "./store-items"
+import { Store } from './components/Store'
+import { Cart } from "./components/Cart"
 
-console.log(storeItems)
+// console.log(storeItems)
 
 export default function App() {
 
-  const [itemList] = useState(storeItems)
+  // const [itemList] = useState(storeItems)
   const [cart, setCart] = useState([])
 
   let total = 0
@@ -24,8 +24,8 @@ export default function App() {
     <>
       <header id="store">
         <h1>Greengrocers</h1>
-        < StoreItemList 
-            itemList={itemList}
+        < Store 
+            // itemList={itemList}
             cart={cart}
             setCart={setCart}
         />
@@ -33,7 +33,7 @@ export default function App() {
       <main id="cart">
         <h2>Your Cart</h2>
         <div className="cart--item-list-container">
-        < StoreCart 
+        < Cart 
             cart={cart}
             setCart={setCart}
         />
