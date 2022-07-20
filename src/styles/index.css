@@ -35,6 +35,15 @@ button {
   text-align: center;
 }
 
+.store--filter-sort-buttons {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(5, 125px);
+  grid-gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 .store--item-list {
   display: grid;
   grid-template-columns: repeat(4, 125px);

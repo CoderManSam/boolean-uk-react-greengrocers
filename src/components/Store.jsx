@@ -23,22 +23,21 @@ export function Store(props) {
          setItemList(storeItems)
     }
 
-    // SORT CURRENTLY ISN'T WORKING CORRECTLY AS HAS TO WAIT FOR STATE TO UPDATE, NEED FIX
     const sortPriceDescending = () => {
-        const priceDescending = itemList.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        const priceDescending = [...itemList]
 
-        console.log("sorted array ", priceDescending)
+        priceDescending.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
 
         setItemList(priceDescending)
    }
 
    const sortPriceAscending = () => {
-    const priceAscending = itemList.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        const priceAscending = [...itemList]
 
-    console.log("sorted array ", priceAscending)
+        priceAscending.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
 
-    setItemList(priceAscending)
-}
+        setItemList(priceAscending)
+    }
 
     const addToCart = (item, itemId) => {
         const newCartItemArray = [...props.cart]
@@ -59,11 +58,13 @@ export function Store(props) {
 
     return (
         <div>
-            <button type="click" onClick={() => { vegFilter() }}>Display only vegetables</button>
-            <button type="click" onClick={() => { fruitFilter() }}>Display only fruits</button>
-            <button type="click" onClick={() => { undoFilter() }}>Undo filters/sort</button>
-            <button type="click" onClick={() => { sortPriceDescending() }}>Sort by price: high - low</button>
-            <button type="click" onClick={() => { sortPriceAscending() }}>Sort by price: low - high</button>
+            <div className="store--filter-sort-buttons">
+                <button type="click" onClick={() => { vegFilter() }}>Display only vegetables</button>
+                <button type="click" onClick={() => { fruitFilter() }}>Display only fruits</button>
+                <button type="click" onClick={() => { undoFilter() }}>Undo filters/sort</button>
+                <button type="click" onClick={() => { sortPriceDescending() }}>Sort by price: high - low</button>
+                <button type="click" onClick={() => { sortPriceAscending() }}>Sort by price: low - high</button>
+            </div>
             <ul className="item-list store--item-list">
                 {itemList.map((item) => (
                     <StoreItems 
